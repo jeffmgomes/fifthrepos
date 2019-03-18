@@ -85,10 +85,9 @@ namespace BankingApp
                 amountTextBox.SelectAll();
             }
             else
-                // Handle insufficient fund
-                //if (amountTransfer > fromBalance)
-                if (((fromRadioButtonChecked == "ChequeRadioButtonOn") && (amountTransfer + 2.0m > fromBalance)) ||
-                ((fromRadioButtonChecked == "SavingsRadioButtonOn") && (amountTransfer > fromBalance)))
+            // Handle insufficient fund
+                // Jefferson - Student 2 - First Change
+                if (((fromRadioButtonChecked == "IvestmentRadioButtonOn") && (amountTransfer + 30.0m > fromBalance)) || ((fromRadioButtonChecked == "SavingRadioButtonOn") && (amountTransfer > fromBalance)))
             {
                 MessageBox.Show("Error! You have insufficient fund. Enter another amount");
                 Keyboard.Focus(amountTextBox);
@@ -154,20 +153,20 @@ namespace BankingApp
                         toBalanceLabel.Content = cInvestmentBalance.ToString("C");
                         break;
 
-                    case "InvestmentRadioButtonOn&SavingsRadioButtonOn":  // from Investment to Saving
-                        fromBalance = fromBalance - amountTransfer;
-                        cInvestmentBalance = fromBalance;
-                        fromBalanceLabel.Content = cInvestmentBalance.ToString("C");
+                        case "InvestmentRadioButtonOn&SavingsRadioButtonOn":  // from Investment to Saving
+                            fromBalance = fromBalance - amountTransfer - 30.0m; // Jefferson - Student 2 - Second change
+                            cInvestmentBalance = fromBalance;
+                            fromBalanceLabel.Content = cInvestmentBalance.ToString("C");
 
                         toBalance = toBalance + amountTransfer;
                         cSavingsBalance = toBalance;
                         toBalanceLabel.Content = cSavingsBalance.ToString("C");
                         break;
 
-                    case "InvestmentRadioButtonOn&ChequeRadioButtonOn":  //from Investment to Cheque
-                        fromBalance = fromBalance - amountTransfer;
-                        cInvestmentBalance = fromBalance;
-                        fromBalanceLabel.Content = cInvestmentBalance.ToString("C");
+                        case "InvestmentRadioButtonOn&ChequeRadioButtonOn":  //from Investment to Cheque
+                            fromBalance = fromBalance - amountTransfer - 30.0m; // Jefferson - Student 2 - Second change
+                            cInvestmentBalance = fromBalance;
+                            fromBalanceLabel.Content = cInvestmentBalance.ToString("C");
 
                         toBalance = toBalance + amountTransfer;
                         cChequeBalance = toBalance;
